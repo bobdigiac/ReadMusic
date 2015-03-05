@@ -1,0 +1,47 @@
+<!Doctype html>
+<html>
+	<head> 
+		<link type = "text/css" rel= "stylesheet" href = "ReadMusic_stylesheet.css"/>
+		<title>Learning to read music</title>
+		<script src="ReadMusic.js"></script>
+	</head>
+	<body onload="moveButtons()"> 
+		<div id="header">
+		<p><span>ReadMusic</span><br>by<br><a href="http://www.bobdigiacomo.com">bobdigiacomo.com</a></p>
+		</div>
+		<div id="content">
+			<div id="staff">	
+				<br>
+				<br>
+				<img src="Images/Examples/Blank Treble Staff.png" alt = "Blank_treble.jpg"/>
+				<img id="oval" src="Images/Examples/Red Oval.png"/>
+				<img id="whole_note" src="Images/Examples/Whole Note.png"/>
+			</div>
+			<div id="text">	
+				<br>
+				<p id="question">Choose the name of the symbol in the red oval</p>
+					<div id="buttonDiv">
+						<div id="buttonAdiv">
+							<button id="A" class="button" onclick="checkAns(true)">Treble Clef</button>
+						</div>	
+						<div id="buttonBdiv">
+							<button id="B" class="button" onclick="checkAns(false)">Bass Clef</button>
+						</div>	
+					</div>	
+				<br>
+					<div id="ansArea">
+						<p id="answer">Write something here</p>
+					</div>
+				<button id = "next" class="button" disabled onclick="buttonReset(); moveHoriz(); 
+					nextQuestion[questionCounter](); questionAdvance();">Next -></button>
+			</div>
+		</div>	
+		<div id="footer">
+			<div style="margin-left:15%">
+				<div id="divblue"></div>
+				<div style = "height:10px"></div>
+				<div id="divgray"></div>	
+			</div>		
+		</div>						
+	</body>
+</html>	

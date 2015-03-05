@@ -1,0 +1,134 @@
+html {
+	font-family: sans-serif;
+	}
+
+h3 {
+	color: #8AB8E6; 
+	font-size: 64px;
+	text-align: center;
+}
+
+#boblink {
+	text-align: center;
+	color: #8AB8E6;
+	font-family: sans-serif;
+}
+
+span {
+	color: #C0C0C0;
+	font-weight: bold;
+	font-style: italic;
+}
+
+a:link {
+    text-decoration: none;
+	color: #C0C0C0;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #C0C0C0;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+#divblue {
+	font-size: 0px; 
+	line-height: 0%; 
+	width: 100%;
+	border-bottom: 15px solid #8AB8E6;
+	border-left: 15px solid white;
+	margin-left: 20px;
+}
+
+#divgray {
+	font-size: 0px; 
+	line-height: 0%; 
+	width: 100%;
+	border-bottom: 15px solid #C0C0C0;
+	border-left: 15px solid white;
+}
+
+#staff {
+	position: relative;
+	margin-top: 15%;
+	text-align: center;
+	background-image: url("Images/Torn_Parchment_Paper.gif");
+	width: 450px;
+	height: 200px;
+	/* display: block;*/
+	margin-left: auto;
+	margin-right: auto;
+}
+	
+#footer {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	padding-bottom: 15px;
+	background: white;
+}	
+	
+#header {
+	height: 50px;
+	background: white;
+	color: #8AB8E6;
+	font-family: sans-serif; 
+}
+	
+#content {
+	position: relative;	
+	color: DimGrey;
+}
+
+.img {
+	margin: 10px;
+}
+	
+.button {
+	min-width: 75px;
+	display: inline-block;
+}
+
+#buttonDiv {
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+}	
+	
+#buttonAdiv {
+	float: right;
+}
+#buttonBdiv {
+	float: left;
+}	
+
+
+#ansArea {
+	color: white;
+}
+	
+#text {
+	text-align: center;
+}	
+	
+#oval {
+	position: absolute;
+	left: 15px;
+}
+	
+#whole_note {
+	position: absolute;
+	width: 20px;
+	height: auto;
+	margin-top: 80px;
+	left: 240px;
+	display: none;
+}	
