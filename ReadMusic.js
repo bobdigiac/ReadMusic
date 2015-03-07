@@ -73,6 +73,7 @@ function checkAns(trueFalse) {
 var notes = ["A", "B", "C", "D", "E", "F", "G"]
 var notesTemp = ["A", "B", "C", "D", "E", "F", "G"]
 
+//test of branching and pushing branch in Git
 
 //Function to choose wrong note (button B)
 function wrongNote(notesTempPosition) {
