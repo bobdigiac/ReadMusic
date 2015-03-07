@@ -71,14 +71,15 @@ function checkAns(trueFalse) {
 			
 //Notes Array
 var notes = ["A", "B", "C", "D", "E", "F", "G"]
+var notesTemp = ["A", "B", "C", "D", "E", "F", "G"]
+
 
 //Function to choose wrong note (button B)
-function wrongNote() {
-	this.randNote = notes[Math.floor(Math.random() * notes.length)];
-	do {
-		 this.randNote = notes[Math.floor(Math.random() * notes.length)];
-	} while (this.randNote === buttonText.correct);
-	return this.randNote				
+function wrongNote(notesTempPosition) {
+	temp = notesTemp.splice(notesTempPosition, 1)
+	this.randNote = notesTemp[Math.floor(Math.random() * notesTemp.length)];
+	notesTemp.splice(notesTempPosition, 0, temp);
+	return this.randNote;				
 }
 		
 // Load new example with these functions
@@ -93,20 +94,20 @@ function question3() {
 	document.getElementById("oval").style.display = "none";
 	document.getElementById("whole_note").style.display = "inline-block";
 	document.getElementById("question").innerHTML = "Choose the correct note name";
-	buttonText(notes[5], wrongNote())
+	buttonText(notes[5], wrongNote(5))
 	}
 nextQuestion.push(question3);	
 						
 function question4() {
 	document.getElementById("whole_note").style.marginTop = "61px";
 	document.getElementById("question").innerHTML = "Choose the correct note name";
-	buttonText(notes[1], wrongNote());
+	buttonText(notes[1], wrongNote(1));
 }						
 nextQuestion.push(question4);
 
 function question5() {
 	document.getElementById("whole_note").style.marginTop = "42px";
 	document.getElementById("question").innerHTML = "Choose the correct note name";	
-	buttonText(notes[4], wrongNote());
+	buttonText(notes[4], wrongNote(4));
 }						
 nextQuestion.push(question5);
