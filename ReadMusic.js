@@ -100,7 +100,7 @@ function question3() {
 nextQuestion.push(question3);	
 						
 function question4() {
-	document.getElementById("whole_note").style.marginTop = "61px";
+	document.getElementById("whole_note").style.marginTop = "62px";
 	document.getElementById("question").innerHTML = "Choose the correct note name";
 	buttonText(notes[1], wrongNote(1));
 }						
@@ -112,3 +112,17 @@ function question5() {
 	buttonText(notes[4], wrongNote(4));
 }						
 nextQuestion.push(question5);
+
+function question6() {
+	document.getElementById("whole_note").style.marginTop = "55px";
+	document.getElementById("question").innerHTML = "Choose the correct note name";	
+	buttonText(notes[2], wrongNote(2));
+}
+nextQuestion.push(question6);
+
+/*
+function question() {
+	this.notePosition =
+	this.
+	}
+	*/
