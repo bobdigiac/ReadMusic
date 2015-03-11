@@ -118,3 +118,11 @@ function question5() {
     buttonText(notes[4], wrongNote(4));
 }
 nextQuestion.push(question5);
+
+
+var notemap = {c4:"100px", d4:"92px", e4:"84px", f4:"76px", g4:"68px", a5:"60px", g5:"52px"}
+
+var randomNote = function() {
+    document.getElementById("whole_note").style.marginTop = notemap[Object.keys(notemap)[Math.floor((Math.random() * Object.keys(notemap).length))]];
+}
+
