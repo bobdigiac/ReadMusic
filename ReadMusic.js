@@ -42,10 +42,10 @@ function buttonReset() {
 }
 
 // Check answer with this function
-function checkAns(trueFalse) {
+function checkAns(rightOrWrong) {
     document.getElementById("ansArea").style.color = "DimGrey";
 
-    if (trueFalse) {
+    if (rightOrWrong) {
         document.getElementById("next").disabled = false;
         var num = (Math.floor)(Math.random()*4);
 
@@ -99,6 +99,7 @@ function wrongNote2(correctNote) {
     }
     return randomWrong   
 } 
+
 // Jeff's wrong note function
 function jeffsRandom(note) {
     var output = note;
@@ -121,28 +122,28 @@ function question3() {
     document.getElementById("oval").style.display = "none";
     document.getElementById("whole_note").style.display = "inline-block";
     document.getElementById("question").innerHTML = "Choose the correct note name";
-    buttonText(notes[5], wrongNote2(notes[5]))
+    buttonText(notes[notes.indexOf("F")], jeffsRandom("F"));
 }
 nextQuestion.push(question3);
 
 function question4() {
     document.getElementById("whole_note").style.marginTop = "61px";
     document.getElementById("question").innerHTML = "Choose the correct note name";
-    buttonText(notes[1], wrongNote(1));
+    buttonText(notes[notes.indexOf("B")], jeffsRandom("B"));
 }
 nextQuestion.push(question4);
 
 function question5() {
     document.getElementById("whole_note").style.marginTop = "42px";
     document.getElementById("question").innerHTML = "Choose the correct note name";
-    buttonText(notes[4], wrongNote(4));
+    buttonText(notes[notes.indexOf("E")], jeffsRandom("E"));
 }
 nextQuestion.push(question5);
 
-
+/*
 var notemap = {c4:"100px", d4:"92px", e4:"84px", f4:"76px", g4:"68px", a5:"60px", g5:"52px"}
 
 var randomNote = function() {
     document.getElementById("whole_note").style.marginTop = notemap[Object.keys(notemap)[Math.floor((Math.random() * Object.keys(notemap).length))]];
 }
-
+*/
