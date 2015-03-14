@@ -89,6 +89,26 @@ function wrongNote(notesTempPosition) {
     return this.randNote;
 }
 
+//New wrong note function
+function wrongNote2(correctNote) {
+    var correct = correctNote;
+    var randomWrong = notes[Math.floor(Math.random * notes.length)]
+
+    while (randomWrong == correct) {
+        randomWrong = notes[Math.floor(Math.random * notes.length)]
+    }
+    return randomWrong   
+} 
+// Jeff's wrong note function
+function jeffsRandom(note) {
+    var output = note;
+
+    while (notes.indexOf(note) == notes.indexOf(output)) {
+        output = notes[Math.floor(Math.random() * notes.length)]
+    }
+    return output
+} 
+
 // Load new example with these functions
 function question2() {
     document.getElementById("oval").style.left = "60px";
@@ -101,7 +121,7 @@ function question3() {
     document.getElementById("oval").style.display = "none";
     document.getElementById("whole_note").style.display = "inline-block";
     document.getElementById("question").innerHTML = "Choose the correct note name";
-    buttonText(notes[5], wrongNote(5))
+    buttonText(notes[5], wrongNote2(notes[5]))
 }
 nextQuestion.push(question3);
 
