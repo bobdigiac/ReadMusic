@@ -141,9 +141,31 @@ function question5() {
 nextQuestion.push(question5);
 
 /*
-var notemap = {c4:"100px", d4:"92px", e4:"84px", f4:"76px", g4:"68px", a5:"60px", g5:"52px"}
+var notemap = {E4:"86px", F4:"80px", G4:"74px", A4:"68px", B4:"62px", 
+    C5:"55px", D5:"49px", E5:"42px", F5:"37"}
 
 var randomNote = function() {
-    document.getElementById("whole_note").style.marginTop = notemap[Object.keys(notemap)[Math.floor((Math.random() * Object.keys(notemap).length))]];
+    document.getElementById("whole_note").style.marginTop = 
+    notemap[Object.keys(notemap)[Math.floor((Math.random() * Object.keys(notemap).length))]];
 }
 */
+
+function moveVert(pixels) {
+    document.getElementById("whole_note").style.marginTop = (pixels)
+}
+function Question(noteName, symbolBool, questText, notePosition) {
+    this.noteName = noteName;
+    this.symbol = symbolBool;
+    this.questText = questText;
+    this.notePosition = notePosition;
+}
+
+var e4 = new Question("E", false, "Whichnote", "86px")
+var f4 = new Question("F", false, "Whichnote", "80px")
+var g4 = new Question("G", false, "Whichnote", "74px")
+var a4 = new Question("A", false, "Whichnote", "68px")
+var b4 = new Question("B", false, "Whichnote", "62px")
+var c5 = new Question("C", false, "Whichnote", "55px")
+var d5 = new Question("D", false, "Whichnote", "49px")
+var e5 = new Question("E", false, "Whichnote", "42px")
+var f5 = new Question("F", false, "Whichnote", "37px")
