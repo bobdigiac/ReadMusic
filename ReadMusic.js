@@ -156,46 +156,44 @@ function moveVert(pixels) {
 }
 
 //Question properties
-function Question(noteOrSymbol, noteName, symbolBool, questText, position, auxInfo) {
-    this.noteOrSymbol = noteOrSymbol;
-    this.name = name;
-    this.symbol = symbolBool;
-    this.questText = questText;
+function Question(noteName, symbolBool, position, auxInfo) {
+    this.noteName = noteName;
+    this.symbolBool = symbolBool;
     this.position = position;
     this.auxInfo = auxInfo;
 }
 
-var e4 = new Question("note", "E", false, "whichnote", "86px")
-var f4 = new Question("note", "F", false, "whichnote", "80px")
-var g4 = new Question("note", "G", false, "whichnote", "74px")
-var a4 = new Question("note", "A", false, "whichnote", "68px")
-var b4 = new Question("note", "B", false, "whichnote", "62px")
-var c5 = new Question("note", "C", false, "whichnote", "55px")
-var d5 = new Question("note", "D", false, "whichnote", "49px")
-var e5 = new Question("note", "E", false, "whichnote", "42px")
-var f5 = new Question("note", "F", false, "Whichnote", "37px")
-var trebleClef = new Question("symbol", "Treble Clef", true, "namesymbol", "15px", 
-    "Bass Clef")
-var timeSignature = new Question("symbol", "Time Signature", true, "namesymbol", "60px", 
-    "Music Clock")
+var e4 = new Question("E", false, "86px")
+var f4 = new Question("F", false, "80px")
+var g4 = new Question("G", false, "74px")
+var a4 = new Question("A", false, "68px")
+var b4 = new Question("B", false, "62px")
+var c5 = new Question("C", false, "55px")
+var d5 = new Question("D", false, "49px")
+var e5 = new Question("E", false, "42px")
+var f5 = new Question("F", false, "37px")
+var trebleClef = new Question("Treble Clef", true, "15px", "Bass Clef")
+var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
 //Array to hold questions
 var questionText = ["Choose the correct note name",
     "Choose the name of the symbol in the red oval"]
 
 function loadQuestion(obj) {
-    if (obj.noteOrSymbol = "note") {
+    var name = obj.name
+
+    if (obj.symbolBool === false) {
         document.getElementById("oval").style.display = "none";
         document.getElementById("whole_note").style.display = "inline-block";
         document.getElementById("question").innerHTML = "Choose the correct note name";
         document.getElementById("whole_note").style.marginTop = obj.position;
-        buttonText(obj.name, jeffsRandom(obj.name));
+        buttonText(obj.noteName, jeffsRandom(obj.noteName));
     } else {
         document.getElementById("oval").style.display = "inline-block";
         document.getElementById("whole_note").style.display = "none";
         document.getElementById("question").innerHTML = "Choose the name of the symbol in the red oval";
         document.getElementById("oval").style.left = obj.position;
-        document.getElementById("A").innerHTML = obj.name;
+        document.getElementById("A").innerHTML = obj.noteName;
         document.getElementById("B").innerHTML = obj.auxInfo;
     }
 }
