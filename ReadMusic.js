@@ -1,11 +1,3 @@
-/* Variable used to call functions in nextQuestion array in order */
-
-var questionCounter = 0
-
-function questionAdvance() {
-    questionCounter += 1
-}
-
 //Function to switch button locations
 function moveButtons() {
     var num = (Math.floor)(Math.random()*2);
@@ -19,21 +11,20 @@ function moveButtons() {
     }
 }
 
-/* Shift notes horizontally */
+// Shift notes horizontally 
 function moveHoriz() {
     var horiz = (Math.floor(Math.random() * 200)) + 140;
     document.getElementById("whole_note").style.left = (horiz)+"px";
 }
 
-/* Array to index functions */
-var nextQuestion = []
-
+// Shortcut for button text
 function buttonText(buttonA, buttonB) {
     this.correct = (buttonA);
     document.getElementById("A").innerHTML = (buttonA);
     document.getElementById("B").innerHTML = (buttonB);
 }
 
+//Reset Buttons
 function buttonReset() {
     document.getElementById("B").disabled = false;
     document.getElementById("next").disabled = true;
@@ -76,7 +67,7 @@ function checkAns(rightOrWrong) {
     }
 }
 
-//Notes Array
+//Notes Arrays
 var notes = ["A", "B", "C", "D", "E", "F", "G"]
 var notesTemp = ["A", "B", "C", "D", "E", "F", "G"]
 
@@ -90,52 +81,7 @@ function jeffsRandom(note) {
     return output
 } 
 
-// Load new example with these functions
-function question2() {
-    document.getElementById("oval").style.left = "60px";
-    document.getElementById("A").innerHTML = "Time Signature";
-    document.getElementById("B").innerHTML = "Music Clock";
-}
-nextQuestion.push(question2);
-
-function question3() {
-    document.getElementById("oval").style.display = "none";
-    document.getElementById("whole_note").style.display = "inline-block";
-    document.getElementById("question").innerHTML = "Choose the correct note name";
-    buttonText(notes[notes.indexOf("F")], jeffsRandom("F"));
-}
-nextQuestion.push(question3);
-
-function question4() {
-    document.getElementById("whole_note").style.marginTop = "61px";
-    document.getElementById("question").innerHTML = "Choose the correct note name";
-    buttonText(notes[notes.indexOf("B")], jeffsRandom("B"));
-}
-nextQuestion.push(question4);
-
-function question5() {
-    document.getElementById("whole_note").style.marginTop = "42px";
-    document.getElementById("question").innerHTML = "Choose the correct note name";
-    buttonText(notes[notes.indexOf("E")], jeffsRandom("E"));
-}
-nextQuestion.push(question5);
-
-/*
-var notemap = {E4:"86px", F4:"80px", G4:"74px", A4:"68px", B4:"62px", 
-    C5:"55px", D5:"49px", E5:"42px", F5:"37"}
-
-var randomNote = function() {
-    document.getElementById("whole_note").style.marginTop = 
-    notemap[Object.keys(notemap)[Math.floor((Math.random() * Object.keys(notemap).length))]];
-}
-*/
-
-//Used to identify note positions
-function moveVert(pixels) {
-    document.getElementById("whole_note").style.marginTop = (pixels)
-}
-
-//Question properties
+//Question prototype
 function Question(noteName, symbolBool, position, auxInfo) {
     this.noteName = noteName;
     this.symbolBool = symbolBool;
@@ -143,6 +89,7 @@ function Question(noteName, symbolBool, position, auxInfo) {
     this.auxInfo = auxInfo;
 }
 
+//Questions
 var e4 = new Question("E", false, "86px")
 var f4 = new Question("F", false, "80px")
 var g4 = new Question("G", false, "74px")
@@ -155,11 +102,11 @@ var f5 = new Question("F", false, "37px")
 var trebleClef = new Question("Treble Clef", true, "15px", "Bass Clef")
 var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
-var newQuestionArray = []
-newQuestionArray.push(e4, f4, g4, a4, b4, c5, d5, e5, f5, trebleClef, timeSignature)
+var nextQuestion = []
+nextQuestion.push(e4, f4, g4, a4, b4, c5, d5, e5, f5, trebleClef, timeSignature)
 
 function loadQuestion() {
-    var obj = newQuestionArray[Math.floor(Math.random() * newQuestionArray.length)]
+    var obj = nextQuestion[Math.floor(Math.random() * nextQuestion.length)]
 
     if (obj.symbolBool === false) {
         document.getElementById("oval").style.display = "none";
