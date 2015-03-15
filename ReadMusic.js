@@ -80,26 +80,6 @@ function checkAns(rightOrWrong) {
 var notes = ["A", "B", "C", "D", "E", "F", "G"]
 var notesTemp = ["A", "B", "C", "D", "E", "F", "G"]
 
-
-//Function to choose wrong note (button B)
-function wrongNote(notesTempPosition) {
-    temp = notesTemp.splice(notesTempPosition, 1);
-    this.randNote = notesTemp[Math.floor(Math.random() * notesTemp.length)];
-    notesTemp.splice(notesTempPosition, 0, temp);
-    return this.randNote;
-}
-
-//New wrong note function
-function wrongNote2(correctNote) {
-    var correct = correctNote;
-    var randomWrong = notes[Math.floor(Math.random * notes.length)]
-
-    while (randomWrong == correct) {
-        randomWrong = notes[Math.floor(Math.random * notes.length)]
-    }
-    return randomWrong   
-} 
-
 // Jeff's wrong note function
 function jeffsRandom(note) {
     var output = note;
@@ -175,18 +155,18 @@ var f5 = new Question("F", false, "37px")
 var trebleClef = new Question("Treble Clef", true, "15px", "Bass Clef")
 var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
-//Array to hold questions
-var questionText = ["Choose the correct note name",
-    "Choose the name of the symbol in the red oval"]
+var newQuestionArray = []
+newQuestionArray.push(e4, f4, g4, a4, b4, c5, d5, e5, f5, trebleClef, timeSignature)
 
-function loadQuestion(obj) {
-    var name = obj.name
+function loadQuestion() {
+    var obj = newQuestionArray[Math.floor(Math.random() * newQuestionArray.length)]
 
     if (obj.symbolBool === false) {
         document.getElementById("oval").style.display = "none";
         document.getElementById("whole_note").style.display = "inline-block";
         document.getElementById("question").innerHTML = "Choose the correct note name";
         document.getElementById("whole_note").style.marginTop = obj.position;
+        moveHoriz();
         buttonText(obj.noteName, jeffsRandom(obj.noteName));
     } else {
         document.getElementById("oval").style.display = "inline-block";
