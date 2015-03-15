@@ -6,7 +6,7 @@ function questionAdvance() {
     questionCounter += 1
 }
 
-/* Function to switch button locations */
+//Function to switch button locations
 function moveButtons() {
     var num = (Math.floor)(Math.random()*2);
 
@@ -150,22 +150,52 @@ var randomNote = function() {
 }
 */
 
+//Used to identify note positions
 function moveVert(pixels) {
     document.getElementById("whole_note").style.marginTop = (pixels)
 }
-function Question(noteName, symbolBool, questText, notePosition) {
-    this.noteName = noteName;
+
+//Question properties
+function Question(noteOrSymbol, noteName, symbolBool, questText, position, auxInfo) {
+    this.noteOrSymbol = noteOrSymbol;
+    this.name = name;
     this.symbol = symbolBool;
     this.questText = questText;
-    this.notePosition = notePosition;
+    this.position = position;
+    this.auxInfo = auxInfo;
 }
 
-var e4 = new Question("E", false, "Whichnote", "86px")
-var f4 = new Question("F", false, "Whichnote", "80px")
-var g4 = new Question("G", false, "Whichnote", "74px")
-var a4 = new Question("A", false, "Whichnote", "68px")
-var b4 = new Question("B", false, "Whichnote", "62px")
-var c5 = new Question("C", false, "Whichnote", "55px")
-var d5 = new Question("D", false, "Whichnote", "49px")
-var e5 = new Question("E", false, "Whichnote", "42px")
-var f5 = new Question("F", false, "Whichnote", "37px")
+var e4 = new Question("note", "E", false, "whichnote", "86px")
+var f4 = new Question("note", "F", false, "whichnote", "80px")
+var g4 = new Question("note", "G", false, "whichnote", "74px")
+var a4 = new Question("note", "A", false, "whichnote", "68px")
+var b4 = new Question("note", "B", false, "whichnote", "62px")
+var c5 = new Question("note", "C", false, "whichnote", "55px")
+var d5 = new Question("note", "D", false, "whichnote", "49px")
+var e5 = new Question("note", "E", false, "whichnote", "42px")
+var f5 = new Question("note", "F", false, "Whichnote", "37px")
+var trebleClef = new Question("symbol", "Treble Clef", true, "namesymbol", "15px", 
+    "Bass Clef")
+var timeSignature = new Question("symbol", "Time Signature", true, "namesymbol", "60px", 
+    "Music Clock")
+
+//Array to hold questions
+var questionText = ["Choose the correct note name",
+    "Choose the name of the symbol in the red oval"]
+
+function loadQuestion(obj) {
+    if (obj.noteOrSymbol = "note") {
+        document.getElementById("oval").style.display = "none";
+        document.getElementById("whole_note").style.display = "inline-block";
+        document.getElementById("question").innerHTML = "Choose the correct note name";
+        document.getElementById("whole_note").style.marginTop = obj.position;
+        buttonText(obj.name, jeffsRandom(obj.name));
+    } else {
+        document.getElementById("oval").style.display = "inline-block";
+        document.getElementById("whole_note").style.display = "none";
+        document.getElementById("question").innerHTML = "Choose the name of the symbol in the red oval";
+        document.getElementById("oval").style.left = obj.position;
+        document.getElementById("A").innerHTML = obj.name;
+        document.getElementById("B").innerHTML = obj.auxInfo;
+    }
+}
