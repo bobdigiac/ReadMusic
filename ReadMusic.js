@@ -106,6 +106,7 @@ var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
 var nextQuestion = []
 nextQuestion.push(d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, trebleClef, timeSignature)
+var answeredQuestion =[]
 
 function loadQuestion(parameter) {
     if (parameter === undefined) {
@@ -129,4 +130,7 @@ function loadQuestion(parameter) {
         document.getElementById("A").innerHTML = obj.noteName;
         document.getElementById("B").innerHTML = obj.auxInfo;
     }
+
+    nextQuestion.splice(indexOf(obj), 1)
+    answeredQuestion.push(obj)
 }
