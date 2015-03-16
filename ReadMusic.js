@@ -90,23 +90,29 @@ function Question(noteName, symbolBool, position, auxInfo) {
 }
 
 //Questions
+var d4 = new Question("D", false, "92px")
 var e4 = new Question("E", false, "86px")
 var f4 = new Question("F", false, "80px")
 var g4 = new Question("G", false, "74px")
 var a4 = new Question("A", false, "68px")
 var b4 = new Question("B", false, "62px")
-var c5 = new Question("C", false, "55px")
+var c5 = new Question("C", false, "56px")
 var d5 = new Question("D", false, "49px")
-var e5 = new Question("E", false, "42px")
+var e5 = new Question("E", false, "43px")
 var f5 = new Question("F", false, "37px")
+var g5 = new Question("G", false, "31px")
 var trebleClef = new Question("Treble Clef", true, "15px", "Bass Clef")
 var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
 var nextQuestion = []
-nextQuestion.push(e4, f4, g4, a4, b4, c5, d5, e5, f5, trebleClef, timeSignature)
+nextQuestion.push(d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, trebleClef, timeSignature)
 
-function loadQuestion() {
-    var obj = nextQuestion[Math.floor(Math.random() * nextQuestion.length)]
+function loadQuestion(parameter) {
+    if (parameter === undefined) {
+        var obj = nextQuestion[Math.floor(Math.random() * nextQuestion.length)]
+    } else {
+        var obj = parameter
+    }
 
     if (obj.symbolBool === false) {
         document.getElementById("oval").style.display = "none";
