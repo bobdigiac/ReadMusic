@@ -91,7 +91,7 @@ function Question(noteName, symbolBool, position, auxInfo) {
 
 //Questions
 var d4 = new Question("D", false, "92px")
-var e4 = new Question("E", false, "86px")
+var e4 = new Question("E", false, "87px")
 var f4 = new Question("F", false, "80px")
 var g4 = new Question("G", false, "74px")
 var a4 = new Question("A", false, "68px")
@@ -104,11 +104,20 @@ var g5 = new Question("G", false, "31px")
 var trebleClef = new Question("Treble Clef", true, "15px", "Bass Clef")
 var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
+//Array to hold unasked questions
 var nextQuestion = []
 nextQuestion.push(d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, trebleClef, timeSignature)
+//Array to hold asked questions
 var answeredQuestion =[]
 
 function loadQuestion(parameter) {
+    if (nextQuestion.length === 0) {
+        while (answeredQuestion.length > 0) {
+            nextQuestion.push(answeredQuestion[0])
+            answeredQuestion.splice(0, 1)
+        }
+    }
+
     if (parameter === undefined) {
         var obj = nextQuestion[Math.floor(Math.random() * nextQuestion.length)]
     } else {
@@ -131,6 +140,6 @@ function loadQuestion(parameter) {
         document.getElementById("B").innerHTML = obj.auxInfo;
     }
 
-    nextQuestion.splice(indexOf(obj), 1)
+    nextQuestion.splice(nextQuestion.indexOf(obj), 1)
     answeredQuestion.push(obj)
 }
