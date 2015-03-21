@@ -111,6 +111,8 @@ nextQuestion.push(d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, trebleClef, timeSi
 var answeredQuestion =[]
 
 //levels
+var currentLevel = 1
+
 var level1 = []
 level1.push(f4, a4, c5, e5, trebleClef, timeSignature)
 
@@ -119,12 +121,25 @@ level2.push(e4, g4, b4, d5, f5)
 
 var level3 = level1.concat(level2)
 
+//Load a new level
+function levelLoad(level) {
+    if (nextQuestion.length > 0) {
+        for (i = (nextQuestion.length - 1); i >= 0; i--) {
+            nextQuestion.splice(i, 1)
+        }
+    } 
+
+    for (i = 0; i < level.length; i++) {
+        nextQuestion.push(level[i])
+    }
+}
+
+
 var showingButtons = false
 
 function loadQuestion(parameter) {
     if (showingButtons == false) {
         document.getElementById("buttonDiv").style.display = "block";
-        showingButtons = true
         showingButtons = true
     }
 
