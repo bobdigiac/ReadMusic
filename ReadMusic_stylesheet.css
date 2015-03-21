@@ -62,7 +62,6 @@ a:active {
     background-image: url("Images/torn_parchment_paper.gif");
     width: 450px;
     height: 200px;
-    /* display: block;*/
     margin-left: auto;
     margin-right: auto;
 }
@@ -101,6 +100,7 @@ a:active {
     width: 200px;
     margin-left: auto;
     margin-right: auto;
+    display: none;
 }
 
 #buttonAdiv {
@@ -111,6 +111,9 @@ a:active {
     float: left;
 }
 
+#question {
+    color: DimGrey;
+}
 
 #ansArea {
     color: white;
@@ -123,11 +126,12 @@ a:active {
 #oval {
     position: absolute;
     left: 15px;
+    display: none;
 }
 
 #whole_note {
     position: absolute;
-    width: 20px;
+    width: 21px;
     height: auto;
     margin-top: 80px;
     left: 240px;

@@ -91,12 +91,12 @@ function Question(noteName, symbolBool, position, auxInfo) {
 
 //Questions
 var d4 = new Question("D", false, "92px")
-var e4 = new Question("E", false, "87px")
+var e4 = new Question("E", false, "86px")
 var f4 = new Question("F", false, "80px")
 var g4 = new Question("G", false, "74px")
 var a4 = new Question("A", false, "68px")
 var b4 = new Question("B", false, "62px")
-var c5 = new Question("C", false, "56px")
+var c5 = new Question("C", false, "55px")
 var d5 = new Question("D", false, "49px")
 var e5 = new Question("E", false, "43px")
 var f5 = new Question("F", false, "37px")
@@ -110,7 +110,24 @@ nextQuestion.push(d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, trebleClef, timeSi
 //Array to hold asked questions
 var answeredQuestion =[]
 
+//levels
+var level1 = []
+level1.push(f4, a4, c5, e5, trebleClef, timeSignature)
+
+var level2 = []
+level2.push(e4, g4, b4, d5, f5)
+
+var level3 = level1.concat(level2)
+
+var showingButtons = false
+
 function loadQuestion(parameter) {
+    if (showingButtons == false) {
+        document.getElementById("buttonDiv").style.display = "block";
+        showingButtons = true
+        showingButtons = true
+    }
+
     if (nextQuestion.length === 0) {
         while (answeredQuestion.length > 0) {
             nextQuestion.push(answeredQuestion[0])
