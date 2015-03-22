@@ -134,12 +134,12 @@ function levelLoad(level) {
     }
 }
 
-
 var showingButtons = false
 
 function loadQuestion(parameter) {
     if (showingButtons == false) {
         document.getElementById("buttonDiv").style.display = "block";
+        document.getElementById("level").style.color = "DimGrey";
         showingButtons = true
     }
 

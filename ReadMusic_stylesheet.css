@@ -57,7 +57,7 @@ a:active {
 
 #staff {
     position: relative;
-    margin-top: 15%;
+ /*   margin-top: 15%; */
     text-align: center;
     background-image: url("Images/torn_parchment_paper.gif");
     width: 450px;
@@ -136,4 +136,9 @@ a:active {
     margin-top: 80px;
     left: 240px;
     display: none;
+}
+#level {
+    color: white;
+    text-align: center;
+    margin-top: 10%;
 }
