@@ -28,13 +28,13 @@ function buttonText(buttonA, buttonB) {
 function buttonReset() {
     document.getElementById("B").disabled = false;
     document.getElementById("next").disabled = true;
-    document.getElementById("ansArea").style.color = "white";
+    document.getElementById("ansArea").style.visibility = "hidden";
     moveButtons();
 }
 
 // Check answer with this function
 function checkAns(rightOrWrong) {
-    document.getElementById("ansArea").style.color = "DimGrey";
+    document.getElementById("ansArea").style.visibility = "visible";
 
     if (rightOrWrong) {
         document.getElementById("next").disabled = false;
@@ -106,12 +106,13 @@ var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
 //Array to hold unasked questions
 var nextQuestion = []
-nextQuestion.push(d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, trebleClef, timeSignature)
+//nextQuestion.push(d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, trebleClef, timeSignature)
 //Array to hold asked questions
 var answeredQuestion =[]
 
 //levels
 var currentLevel = 1
+var score
 
 var level1 = []
 level1.push(f4, a4, c5, e5, trebleClef, timeSignature)
@@ -138,8 +139,8 @@ var showingButtons = false
 
 function loadQuestion(parameter) {
     if (showingButtons == false) {
-        document.getElementById("buttonDiv").style.display = "block";
-        document.getElementById("level").style.color = "DimGrey";
+        document.getElementById("buttonDiv").style.visibility = "visible";
+        document.getElementById("level").style.visibility = "visible";
         showingButtons = true
     }
 
@@ -175,3 +176,8 @@ function loadQuestion(parameter) {
     nextQuestion.splice(nextQuestion.indexOf(obj), 1)
     answeredQuestion.push(obj)
 }
+/*
+function testButtonShowToggle() {
+    document.getElementById("buttonDiv").style.visibility = "visible";
+}
+*/

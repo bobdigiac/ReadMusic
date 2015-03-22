@@ -100,7 +100,8 @@ a:active {
     width: 200px;
     margin-left: auto;
     margin-right: auto;
-    display: none;
+    visibility: hidden;
+    /*display: none;*/
 }
 
 #buttonAdiv {
@@ -116,7 +117,8 @@ a:active {
 }
 
 #ansArea {
-    color: white;
+    color: DimGrey;
+    visibility: hidden;
 }
 
 #text {
@@ -138,7 +140,19 @@ a:active {
     display: none;
 }
 #level {
-    color: white;
+    color: DimGrey;
     text-align: center;
     margin-top: 10%;
+    visibility: hidden;
+}
+
+.block {
+    background-color: white;
+    width: 25px;
+    height: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    visibility: hidden;
+    border: solid 2px;
 }
