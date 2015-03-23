@@ -84,7 +84,7 @@ a:active {
 
 #content {
     position: relative;
-    color: DimGrey;
+    color: #C0C0C0;
 }
 
 .img {
@@ -113,11 +113,11 @@ a:active {
 }
 
 #question {
-    color: DimGrey;
+    color: #C0C0C0;
 }
 
 #ansArea {
-    color: DimGrey;
+    color: #C0C0C0;
     visibility: hidden;
 }
 
@@ -140,7 +140,7 @@ a:active {
     display: none;
 }
 #level {
-    color: DimGrey;
+    color: #C0C0C0;
     text-align: center;
     margin-top: 10%;
     visibility: hidden;
@@ -153,6 +153,5 @@ a:active {
     margin-left: auto;
     margin-right: auto;
     display: inline-block;
-    visibility: hidden;
     border: solid 2px;
 }

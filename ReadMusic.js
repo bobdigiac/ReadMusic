@@ -38,7 +38,10 @@ function checkAns(rightOrWrong) {
 
     if (rightOrWrong) {
         document.getElementById("next").disabled = false;
+        score += 1;
+        scoreString = score.toString();
         var num = (Math.floor)(Math.random()*4);
+        document.getElementById(score).style.backgroundColor = "#C0C0C0"
 
         switch (num) {
             case 0: document.getElementById("answer").innerHTML = "Yes!";
@@ -54,6 +57,10 @@ function checkAns(rightOrWrong) {
 
         document.getElementById("B").disabled = true;
         var num = (Math.floor)(Math.random()*4);
+        for (i = score; i > 0; i--) {
+            document.getElementById(i).style.backgroundColor = "white"
+        }
+        score = 0
 
         switch (num) {
             case 0: document.getElementById("answer").innerHTML = "No, not that one";
@@ -112,7 +119,7 @@ var answeredQuestion =[]
 
 //levels
 var currentLevel = 1
-var score
+var score = 0
 
 var level1 = []
 level1.push(f4, a4, c5, e5, trebleClef, timeSignature)
@@ -176,8 +183,3 @@ function loadQuestion(parameter) {
     nextQuestion.splice(nextQuestion.indexOf(obj), 1)
     answeredQuestion.push(obj)
 }
-/*
-function testButtonShowToggle() {
-    document.getElementById("buttonDiv").style.visibility = "visible";
-}
-*/
