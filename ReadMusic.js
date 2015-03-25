@@ -76,7 +76,6 @@ function checkAns(rightOrWrong) {
 
 //Notes Arrays
 var notes = ["A", "B", "C", "D", "E", "F", "G"]
-var notesTemp = ["A", "B", "C", "D", "E", "F", "G"]
 
 // Jeff's wrong note function
 function jeffsRandom(note) {
@@ -111,15 +110,37 @@ var g5 = new Question("G", false, "31px")
 var trebleClef = new Question("Treble Clef", true, "15px", "Bass Clef")
 var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
+/*Level prototype
+function Level(Q) {
+    this.questions = []
+    this.questions.push(Q)
+    this.neededToAdvance = this.questions.length
+    this.levelLoad = function () {
+        if (nextQuestion.length > 0) {
+            for (i = (nextQuestion.length - 1); i >= 0; i--) {
+                nextQuestion.splice(i, 1)
+            }
+        } 
+
+        for (i = 0; i < this.questions.length; i++) {
+            nextQuestion.push(this.questions[i])
+        }
+    }
+}
+
+var level1 = new Level(g4, a4)
+*/
+
 //Array to hold unasked questions
 var nextQuestion = []
-//nextQuestion.push(d4, e4, f4, g4, a4, b4, c5, d5, e5, f5, g5, trebleClef, timeSignature)
+
 //Array to hold asked questions
 var answeredQuestion =[]
 
 //levels
 var currentLevel = 1
 var score = 0
+
 
 var level1 = []
 level1.push(f4, a4, c5, e5, trebleClef, timeSignature)
@@ -129,16 +150,25 @@ level2.push(e4, g4, b4, d5, f5)
 
 var level3 = level1.concat(level2)
 
+
 //Load a new level
 function levelLoad(level) {
+    document.getElementById("level_holder").innerHTML = "LEVEL" + " " + currentLevel;
     if (nextQuestion.length > 0) {
         for (i = (nextQuestion.length - 1); i >= 0; i--) {
             nextQuestion.splice(i, 1)
         }
     } 
 
-    for (i = 0; i < level.length; i++) {
-        nextQuestion.push(level[i])
+    for (i = 1; i < level.length + 1; i++) {
+        nextQuestion.push(level[i - 1])
+//        document.getElementById(i).style.visibility = "visible"
+        document.getElementById(i).style.display = "inline-block"
+    }
+
+    for (j = 18; j > level.length; j--) {
+ //       document.getElementById(j).style.visibility = "hidden"
+        document.getElementById(j).style.display = "none"
     }
 }
 
@@ -147,7 +177,8 @@ var showingButtons = false
 function loadQuestion(parameter) {
     if (showingButtons == false) {
         document.getElementById("buttonDiv").style.visibility = "visible";
-        document.getElementById("level").style.visibility = "visible";
+        document.getElementById("level_holder").style.visibility = "visible";
+        document.getElementById("block_holder").style.visibility = "visible";
         showingButtons = true
     }
 

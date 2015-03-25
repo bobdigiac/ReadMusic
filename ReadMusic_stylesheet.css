@@ -101,7 +101,6 @@ a:active {
     margin-left: auto;
     margin-right: auto;
     visibility: hidden;
-    /*display: none;*/
 }
 
 #buttonAdiv {
@@ -139,19 +138,27 @@ a:active {
     left: 240px;
     display: none;
 }
-#level {
+#level_holder {
     color: #C0C0C0;
     text-align: center;
     margin-top: 10%;
     visibility: hidden;
+    padding-bottom: 10px;
 }
 
 .block {
     background-color: white;
     width: 25px;
     height: 10px;
-    margin-left: auto;
-    margin-right: auto;
     display: inline-block;
     border: solid 2px;
+  /*  visibility: hidden; */
+}
+
+#block_holder {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
+    display: block;
+    text-align: center;
 }
