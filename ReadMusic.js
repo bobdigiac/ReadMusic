@@ -29,8 +29,11 @@ function buttonReset() {
     document.getElementById("B").disabled = false;
     document.getElementById("next").disabled = true;
     document.getElementById("ansArea").style.visibility = "hidden";
+    correctPressed = false
     moveButtons();
 }
+
+var correctPressed = false
 
 // Check answer with this function
 function checkAns(rightOrWrong) {
@@ -38,8 +41,11 @@ function checkAns(rightOrWrong) {
 
     if (rightOrWrong) {
         document.getElementById("next").disabled = false;
-        score += 1;
-        scoreString = score.toString();
+        if (correctPressed === false) {
+            score += 1
+            correctPressed = true
+        }
+
         var num = (Math.floor)(Math.random()*4);
         document.getElementById(score).style.backgroundColor = "#C0C0C0"
 
@@ -52,6 +58,7 @@ function checkAns(rightOrWrong) {
                     break;
             default: document.getElementById("answer").innerHTML = "Wonderful!";
         }
+
 
     } else {
 
@@ -110,26 +117,43 @@ var g5 = new Question("G", false, "31px")
 var trebleClef = new Question("Treble Clef", true, "15px", "Bass Clef")
 var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
-/*Level prototype
-function Level(Q) {
+//Level prototype
+function Level(levelIndex) {
+    this.levelIndex = levelIndex
     this.questions = []
-    this.questions.push(Q)
-    this.neededToAdvance = this.questions.length
+
+    for (i = 1; i < arguments.length; i++) {
+            this.questions.push(arguments[i])
+        }
+
     this.levelLoad = function () {
+        currentLevel = this.levelIndex
+        document.getElementById("level_holder").innerHTML = "LEVEL" + " " + currentLevel
+
         if (nextQuestion.length > 0) {
             for (i = (nextQuestion.length - 1); i >= 0; i--) {
                 nextQuestion.splice(i, 1)
             }
         } 
 
-        for (i = 0; i < this.questions.length; i++) {
-            nextQuestion.push(this.questions[i])
+        for (j = 1; j < this.questions.length; j++) {
+            nextQuestion.push(this.questions[j])
+            document.getElementById(j).style.visibility = "visible"
+            document.getElementById(j).style.display = "inline-block"
         }
+
+        for (k = 18; k > this.questions.length; k--) {
+        document.getElementById(k).style.visibility = "hidden"
+        document.getElementById(k).style.display = "none"
+        }
+
+        loadQuestion()
+        buttonReset()
     }
 }
 
-var level1 = new Level(g4, a4)
-*/
+var level1 = new Level(1, f4, a4, c5, e5, trebleClef, timeSignature)
+var level2 = new Level(2, e4, g4, b4, d5, f5)
 
 //Array to hold unasked questions
 var nextQuestion = []
@@ -141,7 +165,7 @@ var answeredQuestion =[]
 var currentLevel = 1
 var score = 0
 
-
+/*
 var level1 = []
 level1.push(f4, a4, c5, e5, trebleClef, timeSignature)
 
@@ -162,15 +186,16 @@ function levelLoad(level) {
 
     for (i = 1; i < level.length + 1; i++) {
         nextQuestion.push(level[i - 1])
-//        document.getElementById(i).style.visibility = "visible"
+        document.getElementById(i).style.visibility = "visible"
         document.getElementById(i).style.display = "inline-block"
     }
 
     for (j = 18; j > level.length; j--) {
- //       document.getElementById(j).style.visibility = "hidden"
+        document.getElementById(j).style.visibility = "hidden"
         document.getElementById(j).style.display = "none"
     }
 }
+*/
 
 var showingButtons = false
 
