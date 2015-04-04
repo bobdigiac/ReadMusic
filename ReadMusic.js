@@ -59,6 +59,10 @@ function checkAns(rightOrWrong) {
             default: document.getElementById("answer").innerHTML = "Wonderful!";
         }
 
+        if (score == currentLevel.length) {
+            alert("Way to go!")
+            levelLoad(levelArray[currentLevelIndex])
+        }
 
     } else {
 
@@ -117,18 +121,24 @@ var g5 = new Question("G", false, "31px")
 var trebleClef = new Question("Treble Clef", true, "15px", "Bass Clef")
 var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 
+//levels
+var currentLevel
+var currentLevelIndex = 0
+var score = 0
+/*
 //Level prototype
-function Level(levelIndex) {
+function Level(levelName, levelIndex, Questions) {
+    this.levelName = levelName
     this.levelIndex = levelIndex
     this.questions = []
 
-    for (i = 1; i < arguments.length; i++) {
+    for (i = 2; i < arguments.length; i++) {
             this.questions.push(arguments[i])
         }
 
     this.levelLoad = function () {
         currentLevel = this.levelIndex
-        document.getElementById("level_holder").innerHTML = "LEVEL" + " " + currentLevel
+        document.getElementById("level_holder").innerHTML = "LEVEL" + " " + this.levelIndex
 
         if (nextQuestion.length > 0) {
             for (i = (nextQuestion.length - 1); i >= 0; i--) {
@@ -137,7 +147,7 @@ function Level(levelIndex) {
         } 
 
         for (j = 1; j < this.questions.length; j++) {
-            nextQuestion.push(this.questions[j])
+            nextQuestion.push(this.questions[j - 1])
             document.getElementById(j).style.visibility = "visible"
             document.getElementById(j).style.display = "inline-block"
         }
@@ -152,20 +162,16 @@ function Level(levelIndex) {
     }
 }
 
-var level1 = new Level(1, f4, a4, c5, e5, trebleClef, timeSignature)
-var level2 = new Level(2, e4, g4, b4, d5, f5)
-
+var level1 = new Level("level1", 1, f4, a4, c5, e5, trebleClef, timeSignature)
+var level2 = new Level("level2", 2, e4, g4, b4, d5, f5)
+*/
 //Array to hold unasked questions
 var nextQuestion = []
 
 //Array to hold asked questions
 var answeredQuestion =[]
 
-//levels
-var currentLevel = 1
-var score = 0
 
-/*
 var level1 = []
 level1.push(f4, a4, c5, e5, trebleClef, timeSignature)
 
@@ -174,28 +180,41 @@ level2.push(e4, g4, b4, d5, f5)
 
 var level3 = level1.concat(level2)
 
+var levelArray = []
+levelArray.push(level1, level2, level3)
 
 //Load a new level
 function levelLoad(level) {
-    document.getElementById("level_holder").innerHTML = "LEVEL" + " " + currentLevel;
+    currentLevelIndex += 1
+    document.getElementById("level_holder").innerHTML = "LEVEL" + " " + (currentLevelIndex);
+    currentLevel = level
+
     if (nextQuestion.length > 0) {
         for (i = (nextQuestion.length - 1); i >= 0; i--) {
             nextQuestion.splice(i, 1)
         }
     } 
 
-    for (i = 1; i < level.length + 1; i++) {
-        nextQuestion.push(level[i - 1])
-        document.getElementById(i).style.visibility = "visible"
-        document.getElementById(i).style.display = "inline-block"
+    for (j = 1; j < level.length + 1; j++) {
+        nextQuestion.push(level[j - 1])
+        document.getElementById(j).style.visibility = "visible"
+        document.getElementById(j).style.display = "inline-block"
     }
 
-    for (j = 18; j > level.length; j--) {
-        document.getElementById(j).style.visibility = "hidden"
-        document.getElementById(j).style.display = "none"
+    for (k = 18; k > level.length; k--) {
+        document.getElementById(k).style.visibility = "hidden"
+        document.getElementById(k).style.display = "none"
     }
+
+    for (l = score; l > 0; l--) {
+        document.getElementById(l).style.backgroundColor = "white"
+    }
+
+    loadQuestion()
+    correctPressed = false
+    score = 0
 }
-*/
+
 
 var showingButtons = false
 
@@ -207,10 +226,12 @@ function loadQuestion(parameter) {
         showingButtons = true
     }
 
-    if (nextQuestion.length === 0) {
-        while (answeredQuestion.length > 0) {
-            nextQuestion.push(answeredQuestion[0])
-            answeredQuestion.splice(0, 1)
+    if (score != currentLevel.length) {
+        if (nextQuestion.length === 0) {
+            while (answeredQuestion.length > 0) {
+                nextQuestion.push(answeredQuestion[0])
+                answeredQuestion.splice(0, 1)
+            }
         }
     }
 
