@@ -19,7 +19,6 @@ function moveHoriz() {
 
 // Shortcut for button text
 function buttonText(buttonA, buttonB) {
-    this.correct = (buttonA);
     document.getElementById("A").innerHTML = (buttonA);
     document.getElementById("B").innerHTML = (buttonB);
 }
@@ -60,7 +59,7 @@ function checkAns(rightOrWrong) {
         }
 
         if (score == currentLevel.length) {
-            alert("Way to go!")
+            alert("Level Up!")
             levelLoad(levelArray[currentLevelIndex])
         }
 
@@ -125,7 +124,7 @@ var timeSignature = new Question("Time Signature", true, "60px", "Music Clock")
 var currentLevel
 var currentLevelIndex = 0
 var score = 0
-/*
+
 //Level prototype
 function Level(levelName, levelIndex, Questions) {
     this.levelName = levelName
@@ -135,8 +134,8 @@ function Level(levelName, levelIndex, Questions) {
     for (i = 2; i < arguments.length; i++) {
             this.questions.push(arguments[i])
         }
-
-    this.levelLoad = function () {
+/*
+    this.levelLoad = function() {
         currentLevel = this.levelIndex
         document.getElementById("level_holder").innerHTML = "LEVEL" + " " + this.levelIndex
 
@@ -160,18 +159,24 @@ function Level(levelName, levelIndex, Questions) {
         loadQuestion()
         buttonReset()
     }
+*/    
 }
 
 var level1 = new Level("level1", 1, f4, a4, c5, e5, trebleClef, timeSignature)
 var level2 = new Level("level2", 2, e4, g4, b4, d5, f5)
-*/
+var level3 = new Level("level3", 3, e4, g4, b4, d5, f5, f4, a4, 
+    c5, e5, trebleClef, timeSignature)
+
+var levelArray = []
+levelArray.push(level1, level2, level3)
+
 //Array to hold unasked questions
 var nextQuestion = []
 
 //Array to hold asked questions
 var answeredQuestion =[]
 
-
+/*
 var level1 = []
 level1.push(f4, a4, c5, e5, trebleClef, timeSignature)
 
@@ -182,12 +187,13 @@ var level3 = level1.concat(level2)
 
 var levelArray = []
 levelArray.push(level1, level2, level3)
+*/
 
 //Load a new level
 function levelLoad(level) {
-    currentLevelIndex += 1
+    currentLevelIndex = level.levelIndex
     document.getElementById("level_holder").innerHTML = "LEVEL" + " " + (currentLevelIndex);
-    currentLevel = level
+    currentLevel = level.questions
 
     if (nextQuestion.length > 0) {
         for (i = (nextQuestion.length - 1); i >= 0; i--) {
@@ -195,13 +201,13 @@ function levelLoad(level) {
         }
     } 
 
-    for (j = 1; j < level.length + 1; j++) {
-        nextQuestion.push(level[j - 1])
+    for (j = 1; j <= level.questions.length; j++) {
+        /*nextQuestion.push(level.questions[j + 1]) */
         document.getElementById(j).style.visibility = "visible"
         document.getElementById(j).style.display = "inline-block"
     }
 
-    for (k = 18; k > level.length; k--) {
+    for (k = 18; k > level.questions.length; k--) {
         document.getElementById(k).style.visibility = "hidden"
         document.getElementById(k).style.display = "none"
     }
@@ -210,8 +216,12 @@ function levelLoad(level) {
         document.getElementById(l).style.backgroundColor = "white"
     }
 
+    for (m = 0; m < level.questions.length; m++) {
+        nextQuestion.push(level.questions[m])
+    }
+
     loadQuestion()
-    correctPressed = false
+    buttonReset()
     score = 0
 }
 
@@ -236,27 +246,27 @@ function loadQuestion(parameter) {
     }
 
     if (parameter === undefined) {
-        var obj = nextQuestion[Math.floor(Math.random() * nextQuestion.length)]
+        var localQuestion = nextQuestion[Math.floor(Math.random() * nextQuestion.length)]
     } else {
-        var obj = parameter
+        var localQuestion = parameter
     }
 
-    if (obj.symbolBool === false) {
+    if (localQuestion.symbolBool === false) {
         document.getElementById("oval").style.display = "none";
         document.getElementById("whole_note").style.display = "inline-block";
         document.getElementById("question").innerHTML = "Choose the correct note name";
-        document.getElementById("whole_note").style.marginTop = obj.position;
+        document.getElementById("whole_note").style.marginTop = localQuestion.position;
         moveHoriz();
-        buttonText(obj.noteName, jeffsRandom(obj.noteName));
+        buttonText(localQuestion.noteName, jeffsRandom(localQuestion.noteName));
     } else {
         document.getElementById("oval").style.display = "inline-block";
         document.getElementById("whole_note").style.display = "none";
         document.getElementById("question").innerHTML = "Choose the name of the symbol in the red oval";
-        document.getElementById("oval").style.left = obj.position;
-        document.getElementById("A").innerHTML = obj.noteName;
-        document.getElementById("B").innerHTML = obj.auxInfo;
+        document.getElementById("oval").style.left = localQuestion.position;
+        document.getElementById("A").innerHTML = localQuestion.noteName;
+        document.getElementById("B").innerHTML = localQuestion.auxInfo;
     }
 
-    nextQuestion.splice(nextQuestion.indexOf(obj), 1)
-    answeredQuestion.push(obj)
+    nextQuestion.splice(nextQuestion.indexOf(localQuestion), 1)
+    answeredQuestion.push(localQuestion)
 }
