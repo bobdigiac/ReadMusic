@@ -1,0 +1,71 @@
+<!Doctype html>
+<html>
+    <head>
+        <link type = "text/css" rel= "stylesheet" href = "ReadMusic_stylesheet.css"/>
+        <title>Learning to read music</title>
+        <script src="ReadMusic.js"></script>
+        <meta charset = "UTF-8"
+    </head>
+
+    <body onload="moveButtons(); levelLoad(level1)">
+        <!--levelLoad(level1)-->
+        <div id="header">
+            <p><span>ReadMusic</span><br>by<br><a href="http://www.bobdigiacomo.com">bobdigiacomo.com</a></p>
+        </div>
+        <div id="content">
+            <div id="level_holder"><p>LEVEL Holder</p></div>
+            <div id="block_holder">
+                <div class="block" id="1"></div>
+                <div class="block" id="2"></div>
+                <div class="block" id="3"></div>
+                <div class="block" id="4"></div>
+                <div class="block" id="5"></div>
+                <div class="block" id="6"></div>
+                <div class="block" id="7"></div>
+                <div class="block" id="8"></div>
+                <div class="block" id="9"></div>
+                <div class="block" id="10"></div>
+                <div class="block" id="11"></div>
+                <div class="block" id="12"></div>
+                <div class="block" id="13"></div>
+                <div class="block" id="14"></div>
+                <div class="block" id="15"></div>
+                <div class="block" id="16"></div>
+                <div class="block" id="17"></div>
+                <div class="block" id="18"></div>
+            </div>    
+            <div id="music_area">
+                <img id="treble_clef" src="images/PNG/treble_clef_alone.png" alt="clef">
+                <img id="four_four" src="images/PNG/four_four.png" alt="time signature">
+                <img id="staff" src="images/PNG/staff_new.png" alt="staff"/>
+                <img id="oval" src="images/PNG/red_oval.png" alt="red oval"/>
+                <img id="whole_note" src="images/PNG/whole.png" alt="whole note"/>
+            </div>
+            <div id="text">
+                <br>
+                <p id="question">Please click the NEXT button to begin</p>
+                <div id="buttonDiv">
+                    <div id="buttonAdiv">
+                        <button id="A" class="button" onclick="checkAns(true)">Read</button>
+                    </div>
+                    <div id="buttonBdiv">
+                        <button id="B" class="button" onclick="checkAns(false)">Music</button>
+                    </div>
+                </div>
+                <br>
+                <div id="ansArea">
+                    <p id="answer">Write something here</p>
+                </div>
+                <button id = "next" class="button" onclick="buttonReset(); 
+                loadQuestion()">Next -></button>
+            </div>
+        </div>
+        <div id="footer">
+            <div style="margin-left:15%">
+                <div id="divblue"></div>
+                <div style="height:10px"></div>
+                <div id="divgray"></div>
+            </div>
+        </div>
+    </body>
+</html>

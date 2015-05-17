@@ -1,0 +1,188 @@
+html {
+    font-family: sans-serif;
+}
+
+h3 {
+    color: #8AB8E6;
+    font-size: 64px;
+    text-align: center;
+}
+
+#boblink {
+    text-align: center;
+    color: #8AB8E6;
+    font-family: sans-serif;
+}
+
+span {
+    color: #C0C0C0;
+    font-weight: bold;
+    font-style: italic;
+}
+
+a:link {
+    text-decoration: none;
+    color: #C0C0C0;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #C0C0C0;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+#divblue {
+    font-size: 0px;
+    line-height: 0%;
+    width: 100%;
+    border-bottom: 15px solid #8AB8E6;
+    border-left: 15px solid white;
+    margin-left: 20px;
+}
+
+#divgray {
+    font-size: 0px;
+    line-height: 0%;
+    width: 100%;
+    border-bottom: 15px solid #C0C0C0;
+    border-left: 15px solid white;
+}
+
+#music_area {
+    position: relative;
+    text-align: center;
+    background-image: url("Images/torn_parchment_paper.gif");
+    width: 450px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: -2;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding-bottom: 15px;
+    background: white;
+}
+
+#header {
+    height: 50px;
+    background: white;
+    color: #8AB8E6;
+    font-family: sans-serif;
+}
+
+#content {
+    position: relative;
+    color: #C0C0C0;
+}
+
+.img {
+    margin: 10px;
+}
+
+.button {
+    min-width: 75px;
+    display: inline-block;
+}
+
+#buttonDiv {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
+}
+
+#buttonAdiv {
+    float: right;
+}
+
+#buttonBdiv {
+    float: left;
+}
+
+#question {
+    color: #C0C0C0;
+}
+
+#ansArea {
+    color: #C0C0C0;
+    visibility: hidden;
+}
+
+#text {
+    text-align: center;
+}
+
+#oval {
+    position: absolute;
+    /*left: 15px;*/
+    top: 40px;
+    display: none;
+    width: auto;
+    height: 120px;
+}
+
+#whole_note {
+    position: absolute;
+    /*width: 21px;
+    height: auto;*/
+    margin-top: 80px;
+    left: 240px;
+    display: none;
+}
+#level_holder {
+    color: #C0C0C0;
+    text-align: center;
+    margin-top: 10%;
+    visibility: hidden;
+    padding-bottom: 10px;
+}
+
+.block {
+    background-color: white;
+    width: 25px;
+    height: 10px;
+    display: inline-block;
+    border: solid 2px;
+  /*  visibility: hidden; */
+}
+
+#block_holder {
+    margin-left: auto;
+    margin-right: auto;
+    visibility: hidden;
+    display: block;
+    text-align: center;
+}
+
+#staff {
+    position: relative;
+    top: 70px;
+    z-index: -1;
+}
+
+#treble_clef {
+    position: absolute;
+    top: 46px;
+}
+
+#four_four {
+    position: absolute;
+    top: 71px;
+    left: 75px;
+}
+
+#next {
+    visibility: hidden;
+}
